@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-};
+    reactStrictMode: true,
+    env: {
+        APP_NAME: process.env.APP_NAME
+    }
+}
 
-export default nextConfig;
+export default nextConfig
