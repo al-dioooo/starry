@@ -76,18 +76,17 @@ export default function Home() {
     }
 
     useEffect(() => {
-
-
         setTimeout(() => {
             console.clear()
 
-            console.log("Created with love by Al")
+            console.log("Created with love by Al. Instagram: @al.dioooo")
         }, 1000)
     }, [])
 
     const Message = () => (
-        <div className="mt-2">
-            Selamat ulang tahun, semoga Tuhan Yang Maha Kuasa selalu memberikanmu kebahagiaan dan kesehatan.
+        <div className="mt-4 space-y-8">
+            <div>Selamat ulang tahun, semoga Tuhan Yang Maha Kuasa selalu memberikanmu kebahagiaan dan kesehatan.</div>
+            <div className="text-sm text-neutral-500">- Dari Arifin buat Agria</div>
         </div>
     )
 
