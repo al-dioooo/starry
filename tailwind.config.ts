@@ -14,6 +14,8 @@ const config: Config = {
                     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
             },
             fontFamily: {
+                'argesta': ['Argesta', ...defaultTheme.fontFamily.sans],
+                'branch': ['Branch', ...defaultTheme.fontFamily.sans],
                 'zighead': ['Zighead', ...defaultTheme.fontFamily.sans],
                 'script': ['Autography', ...defaultTheme.fontFamily.sans]
             }

@@ -3,6 +3,18 @@
 @tailwind utilities;
 
 @font-face {
+    font-family: "Argesta";
+    src: url("/fonts/argesta-display-regular.otf");
+    format: "embedded-opentype";
+}
+
+@font-face {
+    font-family: "Branch";
+    src: url("/fonts/branch.otf");
+    format: "embedded-opentype";
+}
+
+@font-face {
     font-family: "Zighead";
     src: url("/fonts/zighead.otf");
     format: "embedded-opentype";
