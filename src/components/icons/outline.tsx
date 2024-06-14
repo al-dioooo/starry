@@ -1,4 +1,6 @@
-export const Flower = ({ className = "", strokeWidth = 1.5 }: { className?: string, strokeWidth?: number }) => {
+type Props = { className?: string, strokeWidth?: number }
+
+export const Flower = ({ className = "", strokeWidth = 1.5 }: Props) => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" className={className} width={24} height={24} viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -8,11 +10,31 @@ export const Flower = ({ className = "", strokeWidth = 1.5 }: { className?: stri
     )
 }
 
-export const Heart = ({ className = "", strokeWidth = 1.5 }: { className?: string, strokeWidth?: number }) => {
+export const Heart = ({ className = "", strokeWidth = 1.5 }: Props) => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" className={className} width={24} height={24} viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+        </svg>
+    )
+}
+
+export const Mail = ({ className = "", strokeWidth = 1.5 }: Props) => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" className={className} width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+            <path d="M3 7l9 6l9 -6" />
+        </svg>
+    )
+}
+
+export const X = ({ className = "", strokeWidth = 1.5 }: Props) => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" className={className} width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M18 6l-12 12" />
+            <path d="M6 6l12 12" />
         </svg>
     )
 }

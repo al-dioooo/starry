@@ -1,7 +1,8 @@
 import { ButterflyTop, Curl, Leaf, Star } from "@/components/graphics/decoration"
 import LineInMotionGraphics from "@/components/graphics/line-in-motion"
-import { Heart } from "@/components/icons/outline"
+import { Heart, Mail } from "@/components/icons/outline"
 import Loader from "@/components/loader"
+import Modal from "@/components/modal"
 import HorizontalRunningText from "@/components/running-text/horizontal"
 import VerticalRunningText from "@/components/running-text/vertical"
 import { getBoundingBox } from "@/helpers/clip-path"
@@ -35,13 +36,15 @@ export default function Home() {
     const blob = useRef(null)
     const heroImage = useRef()
 
+    const [isMessageOpen, setIsMessageOpen] = useState<boolean>(false)
+
     const [color, setColor] = useState(colors.find((row) => row.code === '1'))
-    const [backgroundWidth, setBackgroundWidth] = useState(0)
-    const [backgroundHeight, setBackgroundHeight] = useState(0)
+    const [backgroundWidth, setBackgroundWidth] = useState<number>(0)
+    const [backgroundHeight, setBackgroundHeight] = useState<number>(0)
 
-    const [imageBackground, setImageBackground] = useState('/img/1.jpeg')
+    const [imageBackground, setImageBackground] = useState<string>('/img/1.jpeg')
 
-    const [isLoaded, setIsLoaded] = useState(false)
+    const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
     useEffect(() => {
         // getBoundingBox(polaroid)
@@ -72,6 +75,22 @@ export default function Home() {
         setIsLoaded(true)
     }
 
+    useEffect(() => {
+
+
+        setTimeout(() => {
+            console.clear()
+
+            console.log("Created with love by Al")
+        }, 1000)
+    }, [])
+
+    const Message = () => (
+        <div className="mt-2">
+            Selamat ulang tahun, semoga Tuhan Yang Maha Kuasa selalu memberikanmu kebahagiaan dan kesehatan.
+        </div>
+    )
+
     return (
         <MainLayout title="Happy Birthday Agria!" overrideTitle={false}>
             <AnimatePresence mode="wait">
@@ -82,8 +101,8 @@ export default function Home() {
             <div className="pointer-events-none select-none">
                 <div className="overflow-hidden absolute inset-0 z-50 flex my-2 opacity-20">
                     <div className="overflow-hidden flex flex-col justify-between h-full">
-                        <HorizontalRunningText direction={-1}><span className="uppercase font-semibold tracking-widest">Happy Birthday Agriananda</span></HorizontalRunningText>
                         <HorizontalRunningText><span className="uppercase font-semibold tracking-widest">Happy Birthday Agriananda</span></HorizontalRunningText>
+                        {/* <HorizontalRunningText><span className="uppercase font-semibold tracking-widest">Happy Birthday Agriananda</span></HorizontalRunningText> */}
                     </div>
                 </div>
                 {/* <div className="overflow-hidden absolute inset-0 z-50 flex m-2 opacity-20">
@@ -149,17 +168,17 @@ export default function Home() {
                         </svg>
                         <motion.div initial={{ rotate: -16 }} animate={{ rotate: -12 }} transition={{ type: "tween", ease: "easeInOut", repeat: Infinity, repeatType: "reverse", duration: 2 }} className="w-36 md:w-64 xl:w-72 ring ring-stone-200 ring-opacity-25 ring-inset rounded-md md:rounded-[22px] aspect-[4/5] bg-stone-300 bg-opacity-25 backdrop-blur-sm" style={{ clipPath: "url(#polaroidFrame)" }}></motion.div>
                     </div> */}
-                    <div className="flex items-center w-full mt-16 mb-16 space-x-8 md:mb-0">
-                        {/* <Link href="/playground" className="flex items-center py-2 pl-6 pr-2 space-x-4 text-white transition duration-500 rounded-full hover:active:scale-90 group md:text-sm xl:text-base bg-stone-600">
-                            <span>Playground</span>
-                            <span className="flex items-center justify-center p-2 transition duration-500 border rounded-full group-hover:scale-110 border-stone-400">
-                                <CameraHeart className="w-4 h-4" stroke={1.5} />
+                    <div className="flex items-center justify-center md:justify-start w-full mt-8 mb-16 space-x-8 md:mb-0">
+                        <button onClick={() => setIsMessageOpen(true)} className={`${color?.background} bg-gradient-to-tl flex items-center py-2 pl-6 pr-2 space-x-4 transition duration-500 rounded-full hover:active:scale-90 group md:text-sm xl:text-base text-black`}>
+                            <span>A Message</span>
+                            <span className="flex items-center justify-center p-2 transition duration-500 border rounded-full group-hover:scale-110 border-black">
+                                <Mail className="w-4 h-4" strokeWidth={1.5} />
                             </span>
-                        </Link> */}
-                        {/* <button onClick={downloadCard} className="flex items-center space-x-4 transition duration-500 hover:active:scale-90 group md:text-sm xl:text-base">
+                        </button>
+                        {/* <button onClick={() => {}} className="flex items-center space-x-4 transition duration-500 hover:active:scale-90 group md:text-sm xl:text-base">
                             <span>Birthday Card</span>
                             <span className="flex items-center justify-center p-2 transition duration-500 border rounded-full group-hover:scale-110">
-                                <CloudDownload className="w-4 h-4" stroke={1.5} />
+                                <Mail className="w-4 h-4" strokeWidth={1.5} />
                             </span>
                         </button> */}
                     </div>
@@ -190,10 +209,10 @@ export default function Home() {
                                 </clipPath>
                             </defs>
                         </svg>
-                        <div className="relative z-20 flex w-full h-max md:px-0 top-16 md:inset-0">
-                            <div className={`${color?.shadow} absolute inset-x-0 md:inset-0 scale-[1.02] z-20 bg-gradient-to-bl via-transparent`} style={{ clipPath: "url(#blob)", width: backgroundWidth, height: backgroundHeight }}></div>
+                        <div className="relative z-10 flex w-full h-max px-8 md:px-0 top-16 md:inset-0">
+                            <div className={`${color?.shadow} absolute inset-x-8 md:inset-0 scale-[1.02] z-10 bg-gradient-to-bl via-transparent`} style={{ clipPath: "url(#blob)", width: backgroundWidth, height: backgroundHeight }}></div>
                             {/* @ts-ignore */}
-                            <div ref={heroImage} className="z-20 flex w-full aspect-square h-max" style={{ clipPath: "url(#blob)" }}>
+                            <div ref={heroImage} className="z-10 flex w-full aspect-square h-max" style={{ clipPath: "url(#blob)" }}>
                                 <motion.img initial={{ scale: 1.05, y: 0 }} animate={{ scale: 1.05, y: -5 }} transition={{ type: "tween", ease: "easeInOut", repeat: Infinity, repeatType: "reverse", duration: 3 }} className="object-cover w-full h-full filter" src={imageBackground} alt="" />
                             </div>
                             {/* <motion.div initial={{ opacity: 1 }} animate={{ opacity: .5 }} transition={{ type: "tween", ease: "easeInOut", repeat: Infinity, repeatType: "reverse", repeatDelay: 1, duration: 3 }} className={`${shadow} absolute z-10 w-48 h-48 rounded-full blur-xl bg-opacity-30 -top-4 right-12`}></motion.div> */}
@@ -201,6 +220,8 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+
+            <Modal onClose={() => setIsMessageOpen(false)} isOpen={isMessageOpen} title="Message" content={<Message />} />
         </MainLayout>
     )
 }

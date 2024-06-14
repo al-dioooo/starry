@@ -39,8 +39,8 @@ export default function HorizontalRunningText({ children, direction = 1 }: Horiz
     return (
         <div className="flex flex-nowrap whitespace-nowrap">
             <motion.div className="flex items-center flex-nowrap whitespace-nowrap" style={{ x }}>
-                {[...Array(50)].map(() => (
-                    <p key={null} className="text-sm px-2 inline-flex items-center space-x-2" style={{ transform: `scale(${direction})` }}>
+                {[...Array(50)].map((_, index) => (
+                    <p key={index} className="text-sm px-2 inline-flex items-center space-x-2" style={{ transform: `scale(${direction})` }}>
                         {/* <span>
                             <Heart className="w-4 h-4" strokeWidth={1.5} />
                         </span> */}
